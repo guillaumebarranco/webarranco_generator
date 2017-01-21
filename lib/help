@@ -1,0 +1,4 @@
+Usage: wb <command>
+
+wb <cmd> -h     			quick help on <cmd>
+wb generate <anything>		What you want to generate (example : component)
