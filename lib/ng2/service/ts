@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+
+import { Observable } from "rxjs/Observable";
+
+@Injectable()
+
+export class {name}Service {
+	apiUrl: any;
+
+	constructor(public http: Http) {
+		this.apiUrl = './../assets/files/min/{name}.json';
+	}
+
+	public get{name}() : Observable<Response> {
+		return this.http.get(this.apiUrl);
+	}
+}
