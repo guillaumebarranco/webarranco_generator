@@ -4,7 +4,7 @@ var lib = require('../lib/index.js');
 
 let generate = false;
 let toGenerate = "";
-generateEnabled = ["component", "service"];
+generateEnabled = ["component", "service", "app"];
 
 const getProcessArgs = () => {
 
@@ -14,7 +14,7 @@ const getProcessArgs = () => {
 
 			if(val === "-h" || val === '--help') {
 				lib.help();
-				done();
+				done(val);
 			}
 
 			if(val === "generate") {
@@ -22,12 +22,13 @@ const getProcessArgs = () => {
 			}
 
 			if(generateEnabled.indexOf(val) !== -1 && generate) {
+				console.log('------------ val', val);
 				toGenerate = val;
 			}
 
 			if(generate && toGenerate != "") {
 				lib.generate(toGenerate);
-				done();
+				done(toGenerate);
 			}
 		});
 
@@ -38,7 +39,9 @@ const getProcessArgs = () => {
 function init() {
 
 	getProcessArgs()
-	.then()
+	.then((response) => {
+		console.log(response);
+	})
 	.catch(() => {
 		lib.help();
 	});
